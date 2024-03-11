@@ -63,6 +63,71 @@ Em Rust, as declarações de variáveis são utilizadas para introduzir novas id
 
 Essas são as principais formas de declarar variáveis em Rust. A linguagem enfatiza a segurança de memória e a prevenção de erros, utilizando o conceito de propriedade de propriedade, que é verificada em tempo de compilação pelo borrow checker. Isso ajuda a evitar muitos tipos comuns de erros associados à manipulação de memória.
 
+# Sobre `&`, o "e" comercial
+
+Em Rust, o símbolo "&" tem vários significados, dependendo do contexto em que é utilizado. Aqui estão alguns dos usos mais comuns:
+
+1. **Referências:**
+   - Em Rust, o "&" é usado para criar referências a valores. Isso permite que você passe valores por referência para funções sem transferir a propriedade do valor. Por exemplo:
+     ```rust
+     fn main() {
+         let x = 42;
+         let referencia_para_x = &x;
+         println!("Valor de x: {}", x);
+         println!("Referência para x: {}", referencia_para_x);
+     }
+     ```
+
+2. **Borrowing (Emprestar):**
+   - O "&" é usado em operações de empréstimo, onde uma função ou trecho de código temporariamente "empresta" uma referência para um valor sem tomar posse completa dele.
+     ```rust
+     fn emprestar_referencia(valor: &i32) {
+         // Faz algo com a referência, mas não possui o valor
+     }
+
+     fn main() {
+         let numero = 100;
+         emprestar_referencia(&numero);
+     }
+     ```
+
+3. **Tipos de Referências:**
+   - Rust possui dois tipos de referências: referências imutáveis (`&T`) e referências mutáveis (`&mut T`). As referências imutáveis permitem apenas leitura do valor referenciado, enquanto as referências mutáveis permitem alterações no valor referenciado.
+     ```rust
+     fn modificar_valor(valor: &mut i32) {
+         *valor += 1; // Desreferenciação e modificação do valor
+     }
+
+     fn main() {
+         let mut x = 5;
+         modificar_valor(&mut x);
+         println!("Novo valor de x: {}", x);
+     }
+     ```
+
+4. **Desreferenciação:**
+   - O operador "*" é usado para desreferenciar uma referência, convertendo-a de volta ao valor original.
+     ```rust
+     fn main() {
+         let x = 42;
+         let referencia_para_x = &x;
+         let valor_original = *referencia_para_x;
+         println!("Valor desreferenciado: {}", valor_original);
+     }
+     ```
+
+5. **Slicing (Fatias):**
+   - O "&" também é usado em fatias (`&[T]`), que são referências a partes de um array ou vetor.
+     ```rust
+     fn main() {
+         let vetor = vec![1, 2, 3, 4, 5];
+         let fatia = &vetor[1..4];
+         println!("Fatia: {:?}", fatia);
+     }
+     ```
+
+Esses são alguns dos principais contextos em que o "&" é utilizado em Rust. A ênfase em referências é uma parte fundamental da abordagem de Rust para garantir a segurança e a ausência de erros relacionados à propriedade de dados.
+
 ## Tipos de dados
 
 1. **Integer Types (Tipos Inteiros):**
