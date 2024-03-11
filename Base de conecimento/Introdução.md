@@ -63,7 +63,7 @@ Em Rust, as declarações de variáveis são utilizadas para introduzir novas id
 
 Essas são as principais formas de declarar variáveis em Rust. A linguagem enfatiza a segurança de memória e a prevenção de erros, utilizando o conceito de propriedade de propriedade, que é verificada em tempo de compilação pelo borrow checker. Isso ajuda a evitar muitos tipos comuns de erros associados à manipulação de memória.
 
-# Sobre `&`, o "e" comercial
+## Sobre `&`, o "e" comercial
 
 Em Rust, o símbolo "&" tem vários significados, dependendo do contexto em que é utilizado. Aqui estão alguns dos usos mais comuns:
 
