@@ -63,25 +63,46 @@ Em Rust, as declarações de variáveis são utilizadas para introduzir novas id
 
 Essas são as principais formas de declarar variáveis em Rust. A linguagem enfatiza a segurança de memória e a prevenção de erros, utilizando o conceito de propriedade de propriedade, que é verificada em tempo de compilação pelo borrow checker. Isso ajuda a evitar muitos tipos comuns de erros associados à manipulação de memória.
 
-##  Borrow Checker
+## Tipos de dados
 
-O Borrow Checker (verificador de empréstimos) é uma parte fundamental da abordagem de segurança de memória em Rust. Ele faz parte do sistema de propriedade de empréstimos (ownership) e é responsável por garantir que as regras de empréstimo (borrowing) sejam seguidas corretamente durante o tempo de compilação.
+1. **Integer Types (Tipos Inteiros):**
+   - `i8`, `i16`, `i32`, `i64`, `i128`: Inteiros com sinal de diferentes tamanhos.
+   - `u8`, `u16`, `u32`, `u64`, `u128`: Inteiros sem sinal de diferentes tamanhos.
+   - `isize` e `usize`: Dependem da arquitetura do sistema e representam o tamanho de um ponteiro.
 
-O conceito principal por trás do Borrow Checker está relacionado à propriedade de empréstimo em Rust, que é uma maneira única e eficaz de gerenciar a segurança de memória sem a necessidade de coletor de lixo. Em Rust, uma variável possui a "propriedade" de seus dados, o que significa que é responsável por liberar esses dados quando não precisar mais deles. No entanto, Rust também permite empréstimos temporários de variáveis para outras partes do código, sem transferir a propriedade. Esses empréstimos podem ser mutáveis ou imutáveis.
+2. **Floating-Point Types (Tipos de Ponto Flutuante):**
+   - `f32` e `f64`: Números de ponto flutuante de precisão simples e dupla, respectivamente.
 
-O Borrow Checker verifica as seguintes regras:
+3. **Boolean Type (Tipo Booleano):**
+   - `bool`: Representa valores verdadeiros ou falsos.
 
-1. **Regras de Mutabilidade:**
-   - Uma variável só pode ter um empréstimo mutável em um determinado escopo.
-   - Pode haver vários empréstimos imutáveis de uma variável em um mesmo escopo.
+4. **Character Type (Tipo Caractere):**
+   - `char`: Representa um caractere Unicode, delimitado por aspas simples.
 
-2. **Escopo do Empréstimo:**
-   - Um empréstimo não pode durar mais do que a vida útil da variável original.
-   - O sistema de lifetimes (tempo de vida) em Rust é usado para determinar a extensão dos empréstimos.
+5. **Compound Types (Tipos Compostos):**
+   - **Arrays:** Coleções fixas de elementos do mesmo tipo com tamanho fixo.
+     ```rust
+     let array: [i32; 5] = [1, 2, 3, 4, 5];
+     ```
 
-3. **Não há Referências Nulas:**
-   - O sistema de empréstimos em Rust não permite referências nulas ou dangling references, eliminando assim erros comuns de acesso a memória inválida.
+   - **Tuples:** Coleções heterogêneas de elementos, onde cada elemento pode ter um tipo diferente.
+     ```rust
+     let tuple: (i32, f64, char) = (42, 3.14, 'a');
+     ```
 
-O Borrow Checker trabalha em conjunto com o sistema de lifetimes para analisar o código-fonte e garantir que todas as referências (empréstimos) sejam válidas e não causem problemas de segurança de memória. Isso é feito em tempo de compilação, o que significa que muitos erros relacionados a empréstimos e propriedade são capturados antes mesmo de o código ser executado.
+6. **Slice Types (Tipos de Fatia):**
+   - `&[T]`: Representa uma visualização de uma parte de um array ou outra coleção.
 
-Embora o Borrow Checker possa, em alguns casos, parecer rigoroso demais para programadores que estão acostumados com outras linguagens, ele desempenha um papel crucial na prevenção de erros de acesso à memória e no fornecimento de garantias de segurança robustas, sem a necessidade de um coletor de lixo em tempo de execução. Isso é particularmente valioso em sistemas de baixo nível, onde o controle direto sobre a memória é essencial.
+7. **String Type (Tipo String):**
+   - `String`: Uma coleção de caracteres, alocada dinamicamente e mutável.
+
+8. **Option Type (Tipo Opção):**
+   - `Option<T>`: Representa um valor opcional, podendo ser `Some(T)` ou `None`.
+
+9. **Result Type (Tipo Resultado):**
+   - `Result<T, E>`: Representa uma operação que pode falhar, sendo `Ok(T)` em caso de sucesso e `Err(E)` em caso de erro.
+
+10. **Reference Types (Tipos de Referência):**
+    - `&T` e `&mut T`: Referências imutáveis e mutáveis, respectivamente.
+
+Estes são alguns dos principais tipos de dados em Rust. A linguagem é projetada para ser explícita e segura em relação aos tipos, promovendo a prevenção de erros de segurança e de execução em tempo de compilação.
