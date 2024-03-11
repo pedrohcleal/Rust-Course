@@ -243,3 +243,158 @@ Estes são alguns dos principais tipos de dados em Rust. A linguagem é projetad
    let mut x = true;
    x &= false; // Equivalente a x = x && false;
    ```
+
+## Estrutura de dados para coleção de elementos
+
+Em Rust, existem vários tipos de estruturas de dados que podem ser usadas para representar coleções de elementos, cada uma com suas próprias características e finalidades. As principais estruturas para armazenar coleções são:
+
+1. **Arrays Fixos:**
+   - Em Rust, um array é uma coleção fixa de elementos do mesmo tipo com um tamanho específico definido em tempo de compilação.
+   - Sintaxe: `let array: [T; N] = [elemento1, elemento2, ...];`
+   - Exemplo:
+     ```rust
+     let array: [i32; 3] = [1, 2, 3];
+     ```
+
+2. **Slices:**
+   - Um slice é uma visualização de uma parte de uma coleção, como um array ou vetor.
+   - Sintaxe: `let slice: &[T] = &colecao[indice_inicial..indice_final];`
+   - Exemplo:
+     ```rust
+     let vetor = vec![1, 2, 3, 4, 5];
+     let slice: &[i32] = &vetor[1..4];
+     ```
+
+3. **Vectores (Vec):**
+   - Um vector é uma coleção dinâmica e redimensionável de elementos do mesmo tipo.
+   - Sintaxe: `let vetor: Vec<T> = vec![elemento1, elemento2, ...];`
+   - Exemplo:
+     ```rust
+     let vetor: Vec<i32> = vec![1, 2, 3];
+     ```
+
+4. **Strings:**
+   - Strings são coleções de caracteres Unicode. Em Rust, a string mais comum é o tipo `String`, que é uma coleção dinâmica e modificável de caracteres.
+   - Sintaxe: `let string: String = String::from("Texto");`
+   - Exemplo:
+     ```rust
+     let string: String = String::from("Hello, Rust!");
+     ```
+
+5. **Linked Lists (Listas Ligadas):**
+   - Rust não possui uma implementação padrão de listas ligadas na biblioteca padrão, mas você pode criar suas próprias implementações usando structs e enums.
+
+6. **Deque:**
+   - A coleção `VecDeque` fornece uma deque (double-ended queue) implementada como um vetor dinâmico que permite inserção e remoção eficientes nas extremidades.
+   - Sintaxe: `let deque: VecDeque<T> = VecDeque::new();`
+   - Exemplo:
+     ```rust
+     use std::collections::VecDeque;
+
+     let mut deque: VecDeque<i32> = VecDeque::new();
+     deque.push_front(0);
+     deque.push_back(1);
+     ```
+
+7. **HashMaps:**
+   - O tipo `HashMap` é uma coleção associativa que mapeia chaves a valores, proporcionando acesso eficiente aos elementos por meio de uma função de hash.
+   - Sintaxe: `let hashmap: HashMap<K, V> = HashMap::new();`
+   - Exemplo:
+     ```rust
+     use std::collections::HashMap;
+
+     let mut hashmap: HashMap<&str, i32> = HashMap::new();
+     hashmap.insert("um", 1);
+     hashmap.insert("dois", 2);
+     ```
+
+Estas são algumas das principais estruturas de dados em Rust. A escolha entre elas dependerá das necessidades específicas do seu programa, como tamanho fixo versus dinâmico, eficiência em termos de tempo de execução, e se você precisa de uma associação de chave-valor.
+
+## Manipulação de entrada e saída (I/O)
+
+Em Rust, a manipulação de entrada e saída (I/O) é realizada principalmente por meio da biblioteca padrão, `std::io`. Aqui estão algumas das funcionalidades relacionadas à entrada e saída em Rust:
+
+1. **Leitura de Linha (stdin):**
+   - Para ler uma linha da entrada padrão (teclado), você pode usar o método `read_line` do tipo `std::io::Stdin`.
+   ```rust
+   use std::io;
+
+   fn main() {
+       let mut input = String::new();
+       println!("Digite algo:");
+       io::stdin().read_line(&mut input).expect("Erro ao ler linha");
+       println!("Você digitou: {}", input.trim());
+   }
+   ```
+
+2. **Leitura de Tipos Específicos:**
+   - Você pode usar métodos como `parse` para converter a entrada para um tipo específico.
+   ```rust
+   use std::io;
+
+   fn main() {
+       println!("Digite um número:");
+       let mut input = String::new();
+       io::stdin().read_line(&mut input).expect("Erro ao ler número");
+       let numero: i32 = input.trim().parse().expect("Erro ao converter para número");
+       println!("Você digitou: {}", numero);
+   }
+   ```
+
+3. **Saída para o Console (stdout):**
+   - A macro `println!` é usada para imprimir texto no console, seguida por uma quebra de linha.
+   ```rust
+   fn main() {
+       let nome = "Rust";
+       println!("Olá, {}!", nome);
+   }
+   ```
+
+4. **Formatação de Saída:**
+   - Rust oferece formatação de saída avançada usando a macro `format!` e a função `println!`.
+   ```rust
+   fn main() {
+       let idade = 5;
+       let mensagem = format!("Eu tenho {} anos.", idade);
+       println!("{}", mensagem);
+   }
+   ```
+
+5. **Leitura de Arquivos:**
+   - Para ler o conteúdo de um arquivo, você pode usar a função `std::fs::read_to_string` ou `std::fs::File` com `std::io::Read`.
+   ```rust
+   use std::fs::File;
+   use std::io::Read;
+
+   fn main() {
+       let mut arquivo = File::open("arquivo.txt").expect("Erro ao abrir arquivo");
+       let mut conteudo = String::new();
+       arquivo.read_to_string(&mut conteudo).expect("Erro ao ler arquivo");
+       println!("Conteúdo do arquivo:\n{}", conteudo);
+   }
+   ```
+
+6. **Escrita em Arquivos:**
+   - Para escrever em um arquivo, você pode usar a função `std::fs::File` com `std::io::Write`.
+   ```rust
+   use std::fs::File;
+   use std::io::Write;
+
+   fn main() {
+       let mut arquivo = File::create("saida.txt").expect("Erro ao criar arquivo");
+       arquivo.write_all(b"Olá, mundo!").expect("Erro ao escrever no arquivo");
+   }
+   ```
+
+7. **Manipulação de Erros na I/O:**
+   - O método `expect` ou o uso de resultados (`Result`) são comuns para lidar com possíveis erros durante operações de I/O.
+   ```rust
+   use std::io;
+
+   fn main() {
+       let mut input = String::new();
+       io::stdin().read_line(&mut input).expect("Erro ao ler linha");
+   }
+   ```
+
+Essas são algumas das funcionalidades básicas relacionadas à entrada e saída em Rust. A biblioteca padrão `std::io` fornece uma variedade de tipos e métodos para lidar com operações de entrada e saída de maneira eficiente e segura.
