@@ -106,3 +106,84 @@ Essas são as principais formas de declarar variáveis em Rust. A linguagem enfa
     - `&T` e `&mut T`: Referências imutáveis e mutáveis, respectivamente.
 
 Estes são alguns dos principais tipos de dados em Rust. A linguagem é projetada para ser explícita e segura em relação aos tipos, promovendo a prevenção de erros de segurança e de execução em tempo de compilação.
+
+## Controle de fluxos
+
+1. **Condicional - `if`, `else if`, `else`:**
+   ```rust
+   let numero = 42;
+
+   if numero < 0 {
+       println!("Negativo");
+   } else if numero == 0 {
+       println!("Zero");
+   } else {
+       println!("Positivo");
+   }
+   ```
+
+2. **Loop Infinito - `loop`:**
+   ```rust
+   loop {
+       // Código aqui
+   }
+   ```
+
+3. **Loop com Condição - `while`:**
+   ```rust
+   let mut contador = 0;
+
+   while contador < 5 {
+       println!("Contagem: {}", contador);
+       contador += 1;
+   }
+   ```
+
+4. **Iteração com `for` e Ranges:**
+   ```rust
+   for numero in 1..=5 {
+       println!("Número: {}", numero);
+   }
+   ```
+
+5. **Iteração com `for` e Coleções:**
+   ```rust
+   let vetor = vec![1, 2, 3, 4, 5];
+
+   for elemento in &vetor {
+       println!("Elemento: {}", elemento);
+   }
+   ```
+
+6. **Match - Padrões e Correspondência:**
+   ```rust
+   let valor = 42;
+
+   match valor {
+       0 => println!("Zero"),
+       1 | 2 => println!("Um ou Dois"),
+       3..=9 => println!("Três a Nove"),
+       _ => println!("Outro valor"),
+   }
+   ```
+
+7. **`if let` - Combinação de `if` e `match`:**
+   ```rust
+   let resultado: Result<i32, &str> = Ok(42);
+
+   if let Ok(valor) = resultado {
+       println!("Valor: {}", valor);
+   } else {
+       println!("Erro!");
+   }
+   ```
+
+8. **`while let` - Iteração com `while` e `match`:**
+   ```rust
+   let mut opcao = Some(0);
+
+   while let Some(valor) = opcao {
+       println!("Valor: {}", valor);
+       opcao = None; // Exemplo de interrupção do loop
+   }
+   ```
