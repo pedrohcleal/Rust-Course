@@ -187,3 +187,59 @@ Estes são alguns dos principais tipos de dados em Rust. A linguagem é projetad
        opcao = None; // Exemplo de interrupção do loop
    }
    ```
+
+## Operadores lógicos
+
+1. **`&&` (E lógico):**
+   - Retorna verdadeiro (`true`) se ambas as expressões booleanas à esquerda e à direita forem verdadeiras.
+   ```rust
+   let x = true;
+   let y = false;
+   let resultado = x && y; // Resultado é false
+   ```
+
+2. **`||` (OU lógico):**
+   - Retorna verdadeiro (`true`) se pelo menos uma das expressões booleanas à esquerda ou à direita for verdadeira.
+   ```rust
+   let x = true;
+   let y = false;
+   let resultado = x || y; // Resultado é true
+   ```
+
+3. **`!` (NÃO lógico):**
+   - Inverte o valor booleano de uma expressão.
+   ```rust
+   let x = true;
+   let resultado = !x; // Resultado é false
+   ```
+
+4. **`!=` (Diferente):**
+   - Retorna verdadeiro (`true`) se as expressões à esquerda e à direita não forem iguais.
+   ```rust
+   let a = 5;
+   let b = 7;
+   let resultado = a != b; // Resultado é true
+   ```
+
+5. **`==` (Igual):**
+   - Retorna verdadeiro (`true`) se as expressões à esquerda e à direita forem iguais.
+   ```rust
+   let a = 5;
+   let b = 5;
+   let resultado = a == b; // Resultado é true
+   ```
+
+6. **`<`, `>`, `<=`, `>=` (Relacionais):**
+   - Realizam comparações relacionais entre valores.
+   ```rust
+   let a = 10;
+   let b = 15;
+   let resultado = a < b; // Resultado é true
+   ```
+
+7. **Operadores de Atribuição com Lógica:**
+   - Rust permite combinar operadores de atribuição com operadores lógicos.
+   ```rust
+   let mut x = true;
+   x &= false; // Equivalente a x = x && false;
+   ```
