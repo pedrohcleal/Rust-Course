@@ -199,6 +199,64 @@ Em Rust, as funções são blocos de código que realizam uma tarefa específica
 
 Esses são alguns aspectos fundamentais das funções em Rust. A linguagem suporta programação funcional e fornece ferramentas para escrever código modular e expressivo.
 
+## "casting" e "coercion"
+
+### Casting em Rust:
+
+Para realizar um casting em Rust, você pode usar os operadores `as` ou `transmute`. O `as` é usado para realizar conversões de tipo seguras, enquanto o `transmute` permite a conversão bruta entre tipos, mas deve ser usado com extrema cautela.
+
+#### Usando `as` para Casting:
+
+```rust
+fn main() {
+    let inteiro: i32 = 42;
+    let ponto_flutuante: f64 = inteiro as f64;
+    
+    println!("Inteiro: {}", inteiro);
+    println!("Ponto Flutuante: {}", ponto_flutuante);
+}
+```
+
+#### Usando `transmute` para Casting:
+
+```rust
+fn main() {
+    let inteiro: i32 = 42;
+    let ponto_flutuante: f64;
+
+    unsafe {
+        ponto_flutuante = std::mem::transmute(inteiro);
+    }
+
+    println!("Inteiro: {}", inteiro);
+    println!("Ponto Flutuante: {}", ponto_flutuante);
+}
+```
+
+**Nota:** O uso de `transmute` pode ser perigoso e é geralmente desencorajado, pois pode levar a comportamentos indefinidos se não for usado com cuidado.
+
+### Uncasting (Coercion) em Rust:
+
+Em Rust, você pode usar coerções para converter automaticamente entre tipos relacionados quando a conversão é segura. Isso é feito implicitamente pela linguagem.
+
+```rust
+fn main() {
+    let inteiro: i32 = 42;
+    let ponto_flutuante: f64 = inteiro as f64;
+
+    println!("Inteiro: {}", inteiro);
+    println!("Ponto Flutuante: {}", ponto_flutuante);
+
+    // Rust realiza a coerção automaticamente quando apropriado
+    let resultado: f64 = inteiro.into();
+    println!("Resultado: {}", resultado);
+}
+```
+
+Neste exemplo, `into()` é usado para realizar uma coerção automática de `i32` para `f64`.
+
+Lembre-se de que, em Rust, é sempre preferível usar coerções seguras de tipos sempre que possível para garantir a segurança do programa. O uso de `transmute` e operações de casting inseguras deve ser limitado a situações em que você está absolutamente certo do que está fazendo e pode garantir a segurança da operação.
+
 ## Estrutura de dados para coleção de elementos
 
 Em Rust, existem vários tipos de estruturas de dados que podem ser usadas para representar coleções de elementos, cada uma com suas próprias características e finalidades. As principais estruturas para armazenar coleções são:
