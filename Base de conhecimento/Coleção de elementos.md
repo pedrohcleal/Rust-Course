@@ -63,3 +63,80 @@ Em Rust, existem vários tipos de estruturas de dados que podem ser usadas para 
      ```
 
 Estas são algumas das principais estruturas de dados em Rust. A escolha entre elas dependerá das necessidades específicas do seu programa, como tamanho fixo versus dinâmico, eficiência em termos de tempo de execução, e se você precisa de uma associação de chave-valor.
+
+## Vetores
+
+Em Rust, vetores são coleções de elementos do mesmo tipo, com tamanho fixo e alocados na pilha. Eles são representados pelo tipo `Vec<T>`, onde `T` é o tipo dos elementos que o vetor contém. Aqui estão alguns aspectos importantes sobre vetores em Rust:
+
+### 1. Declaração e Inicialização:
+
+Vetores podem ser declarados e inicializados de várias maneiras:
+
+```rust
+// Vetor vazio de inteiros
+let vetor_vazio: Vec<i32> = Vec::new();
+
+// Inicialização usando a macro vec!
+let vetor_macro = vec![1, 2, 3, 4, 5];
+
+// Inicialização com elementos repetidos
+let vetor_repetido = vec![0; 5]; // [0, 0, 0, 0, 0]
+```
+
+### 2. Acesso a Elementos:
+
+Os elementos de um vetor podem ser acessados usando a notação de índice, começando do índice 0:
+
+```rust
+let vetor = vec![10, 20, 30, 40, 50];
+
+println!("Primeiro elemento: {}", vetor[0]); // Saída: 10
+println!("Segundo elemento: {}", vetor[1]); // Saída: 20
+```
+
+### 3. Atualização de Elementos:
+
+Os elementos de um vetor podem ser atualizados usando a notação de índice:
+
+```rust
+let mut vetor = vec![1, 2, 3];
+
+vetor[1] = 5;
+
+println!("{:?}", vetor); // Saída: [1, 5, 3]
+```
+
+### 4. Métodos e Funções Úteis:
+
+Os vetores em Rust oferecem uma variedade de métodos e funções úteis, como `push`, `pop`, `len`, `contains`, `iter`, entre outros:
+
+```rust
+let mut vetor = vec![1, 2, 3];
+
+// Adicionando um elemento ao final do vetor
+vetor.push(4);
+
+// Removendo o último elemento
+let ultimo_elemento = vetor.pop();
+
+// Obtendo o tamanho do vetor
+let tamanho = vetor.len();
+
+// Verificando se o vetor contém um determinado valor
+let contem_tres = vetor.contains(&3);
+
+// Iterando sobre os elementos do vetor
+for elemento in &vetor {
+    println!("{}", elemento);
+}
+```
+
+### 5. Propriedades de Propriedade e Controle de Propriedade:
+
+Os vetores em Rust são seguros em termos de propriedade. Eles têm propriedades de propriedade, o que significa que cada valor no vetor é de propriedade única, garantindo que não haja acesso simultâneo aos elementos.
+
+```rust
+let v1 = vec![1, 2, 3];
+let v2 = v1; // Movendo a propriedade de v1 para v2
+// println!("{:?}", v1); // Isso resultaria em um erro, pois v1 não é mais válido aqui
+```
