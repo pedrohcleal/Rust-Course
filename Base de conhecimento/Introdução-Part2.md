@@ -256,3 +256,54 @@ fn main() {
 Neste exemplo, `into()` é usado para realizar uma coerção automática de `i32` para `f64`.
 
 Lembre-se de que, em Rust, é sempre preferível usar coerções seguras de tipos sempre que possível para garantir a segurança do programa. O uso de `transmute` e operações de casting inseguras deve ser limitado a situações em que você está absolutamente certo do que está fazendo e pode garantir a segurança da operação.
+
+## Intervalo
+
+### Notação de Intervalo:
+
+Rust oferece uma notação de intervalo usando o operador `..` para criar intervalos abertos no final (excluindo o último valor) e `..=` para intervalos fechados no final (incluindo o último valor).
+
+#### Exemplo de Intervalo Aberto:
+
+```rust
+fn main() {
+    for i in 1..5 {
+        println!("{}", i);
+    }
+}
+```
+
+Este exemplo imprimirá os valores de 1 a 4, excluindo 5.
+
+#### Exemplo de Intervalo Fechado:
+
+```rust
+fn main() {
+    for i in 1..=5 {
+        println!("{}", i);
+    }
+}
+```
+
+Este exemplo imprimirá os valores de 1 a 5, incluindo 5.
+
+### Funções Relacionadas a Intervalos:
+
+Rust também possui métodos e funções relacionadas a intervalos. Por exemplo, a função `contains` pode ser usada para verificar se um valor está dentro de um determinado intervalo.
+
+```rust
+fn main() {
+    let intervalo = 1..=5;
+    let valor = 3;
+
+    if intervalo.contains(&valor) {
+        println!("O valor {} está dentro do intervalo.", valor);
+    } else {
+        println!("O valor {} está fora do intervalo.", valor);
+    }
+}
+```
+
+Este exemplo verifica se o valor 3 está dentro do intervalo de 1 a 5.
+
+Em resumo, embora Rust não tenha um tipo de dados específico chamado "range", a notação de intervalo e as funções relacionadas permitem trabalhar eficientemente com intervalos de valores em várias situações.
