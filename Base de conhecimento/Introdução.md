@@ -397,3 +397,45 @@ Em Rust, a manipulação de entrada e saída (I/O) é realizada principalmente p
    ```
 
 Essas são algumas das funcionalidades básicas relacionadas à entrada e saída em Rust. A biblioteca padrão `std::io` fornece uma variedade de tipos e métodos para lidar com operações de entrada e saída de maneira eficiente e segura.
+
+## Operações matemáticas
+
+1. **Adição:**
+   - `+` é usado para adicionar dois valores.
+   - Exemplo: `let soma = 5 + 3;` resulta em `soma` contendo 8.
+
+2. **Subtração:**
+   - `-` é usado para subtrair um valor de outro.
+   - Exemplo: `let diferenca = 7 - 2;` resulta em `diferenca` contendo 5.
+
+3. **Multiplicação:**
+   - `*` é usado para multiplicar dois valores.
+   - Exemplo: `let produto = 4 * 6;` resulta em `produto` contendo 24.
+
+4. **Divisão:**
+   - `/` é usado para dividir um valor por outro.
+   - Exemplo: `let quociente = 9 / 3;` resulta em `quociente` contendo 3.
+
+5. **Módulo (Resto da Divisão):**
+   - `%` retorna o resto da divisão entre dois números.
+   - Exemplo: `let resto = 10 % 3;` resulta em `resto` contendo 1.
+
+6. **Potenciação:**
+   - `i32::pow()` é usado para elevar um número a uma potência.
+   - Exemplo: `let resultado = i32::pow(2, 3);` resulta em `resultado` contendo 8.
+
+7. **Operações com Números de Ponto Flutuante:**
+   - Operações como adição, subtração, multiplicação e divisão também são aplicáveis a números de ponto flutuante.
+   - Exemplo: `let resultado_adicao = numero1 + numero2;`.
+
+8. **Incremento e Decremento:**
+   - `+=` é usado para incrementar uma variável.
+   - `-=` é usado para decrementar uma variável.
+   - Exemplo:
+     ```rust
+     let mut contador = 0;
+     contador += 1; // Incremento
+     contador -= 1; // Decremento
+     ```
+
+Lembre-se de que, ao trabalhar com números de ponto flutuante, é importante considerar as peculiaridades associadas à representação desses números em computadores e os possíveis erros de arredondamento. Além disso, ao lidar com incremento e decremento, use `mut` para tornar a variável mutável.
