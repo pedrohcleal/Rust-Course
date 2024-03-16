@@ -424,11 +424,25 @@ Essas são algumas das funcionalidades básicas relacionadas à entrada e saída
    - `i32::pow()` é usado para elevar um número a uma potência.
    - Exemplo: `let resultado = i32::pow(2, 3);` resulta em `resultado` contendo 8.
 
-7. **Operações com Números de Ponto Flutuante:**
+7. **Raiz quadrada**
+   Em Rust, você pode calcular a raiz quadrada de um número usando o método `sqrt()` que está disponível para tipos de dados de ponto flutuante (como `f32` e `f64`). Este método retorna a raiz quadrada do número.
+      
+   ```rust
+   fn main() {
+       let x: f64 = 25.0; // Número do qual queremos calcular a raiz quadrada
+       let raiz_quadrada = x.sqrt(); // Calcula a raiz quadrada de x
+   
+       println!("A raiz quadrada de {} é {}", x, raiz_quadrada); //imprime 25
+   }
+   ```
+   
+   Neste exemplo, a raiz quadrada de 25 é calculada usando o método `sqrt()`, e o resultado é impresso na tela. Ao executar este código, você obterá a saída:
+   
+8. **Operações com Números de Ponto Flutuante:**
    - Operações como adição, subtração, multiplicação e divisão também são aplicáveis a números de ponto flutuante.
    - Exemplo: `let resultado_adicao = numero1 + numero2;`.
 
-8. **Incremento e Decremento:**
+9. **Incremento e Decremento:**
    - `+=` é usado para incrementar uma variável.
    - `-=` é usado para decrementar uma variável.
    - Exemplo:
