@@ -1,5 +1,57 @@
 # Intro part2
 
+## Conversão de tipos
+
+Em Rust, a conversão de tipos, também conhecida como "casting", ocorre quando você deseja converter um valor de um tipo para outro. Existem várias formas de conversão de tipos em Rust:
+
+1. **Conversão Implícita**: Rust suporta muitas conversões implícitas entre tipos compatíveis. Por exemplo, você pode atribuir um valor de um tipo para uma variável de outro tipo compatível sem a necessidade de uma conversão explícita.
+
+   ```rust
+   let x: i32 = 5;
+   let y: i64 = x; // Conversão implícita de i32 para i64
+   ```
+
+2. **Conversões Explícitas (Casting)**: Quando Rust não permite uma conversão implícita entre tipos, você pode usar os operadores de "casting" para converter explicitamente um tipo em outro. Existem duas formas principais de casting em Rust: "coercion" e "as".
+
+   - **Coercion**: É uma conversão implícita que pode ocorrer em expressões de Rust. Por exemplo, você pode converter um tipo em outro compatível sem usar uma sintaxe explícita.
+
+     ```rust
+     let x: i32 = 5;
+     let y: i64 = x; // Coercion de i32 para i64
+     ```
+
+   - **As**: É um operador que permite a conversão explícita entre tipos numéricos.
+
+     ```rust
+     let x: i32 = 5;
+     let y: i64 = x as i64; // Conversão explícita de i32 para i64 usando "as"
+     ```
+
+3. **Conversão de String para Tipos Numéricos**: Rust fornece métodos para converter strings em tipos numéricos usando a função `parse()` ou `FromStr` trait.
+
+   ```rust
+   let s = "42";
+   let x: i32 = s.parse().expect("Não é um número válido!"); // Usando parse()
+   ```
+
+4. **Conversão de Tipos Numéricos para String**: Você pode usar o método `to_string()` para converter tipos numéricos em strings.
+
+   ```rust
+   let x: i32 = 42;
+   let s: String = x.to_string(); // Convertendo i32 para String
+   ```
+
+5. **Conversão de Tipos de Referência e Ponteiros**: Rust permite a conversão de tipos de referência e ponteiros usando a sintaxe `as`.
+
+   ```rust
+   let x: i32 = 42;
+   let y: &i32 = &x;
+   let z: *const i32 = y as *const i32; // Conversão de referência para ponteiro
+   ```
+
+Essas são as formas básicas de conversão de tipos em Rust, cobrindo as operações mais comuns necessárias em programas.
+
+
 ## Manipução de strings
 
 Em Rust, a manipulação de strings envolve uma série de métodos e operações que podem ser realizadas para atender a diversas necessidades. Vamos explorar cada um dos itens da sua lista:
