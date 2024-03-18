@@ -64,9 +64,7 @@ Em Rust, existem vários tipos de estruturas de dados que podem ser usadas para 
 
 Estas são algumas das principais estruturas de dados em Rust. A escolha entre elas dependerá das necessidades específicas do seu programa, como tamanho fixo versus dinâmico, eficiência em termos de tempo de execução, e se você precisa de uma associação de chave-valor.
 
-## Arrays
-
-## Arrays em Rust: Uma Abordagem Detalhada
+## Arrays em Rust
 
 Em Rust, arrays servem como estruturas de dados cruciais para armazenar coleções de elementos do mesmo tipo. Eles oferecem acesso eficiente e direto aos seus elementos, tornando-os ferramentas valiosas para diversas tarefas de programação.
 
