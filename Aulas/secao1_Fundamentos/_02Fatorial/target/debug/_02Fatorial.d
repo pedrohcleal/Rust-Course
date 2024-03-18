@@ -1,1 +1,0 @@
-C:\Users\Administrator\Dropbox\GitHub\Rust-Course\Aulas\secao1_Fundamentos\_02Fatorial\target\debug\_02Fatorial.exe: C:\Users\Administrator\Dropbox\GitHub\Rust-Course\Aulas\secao1_Fundamentos\_02Fatorial\src\main.rs
