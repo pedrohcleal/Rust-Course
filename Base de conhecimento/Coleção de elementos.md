@@ -64,6 +64,159 @@ Em Rust, existem vários tipos de estruturas de dados que podem ser usadas para 
 
 Estas são algumas das principais estruturas de dados em Rust. A escolha entre elas dependerá das necessidades específicas do seu programa, como tamanho fixo versus dinâmico, eficiência em termos de tempo de execução, e se você precisa de uma associação de chave-valor.
 
+## Arrays em Rust
+
+Em Rust, arrays servem como estruturas de dados cruciais para armazenar coleções de elementos do mesmo tipo. Eles oferecem acesso eficiente e direto aos seus elementos, tornando-os ferramentas valiosas para diversas tarefas de programação.
+
+**Conceitos-chave:**
+
+* **Tamanho fixo:** Ao contrário de linguagens como Python, os arrays em Rust possuem tamanho fixo definido na compilação. Isso garante segurança de memória e otimização de desempenho.
+* **Tipagem estática:** Cada elemento do array possui um tipo específico, como `i32`, `String` ou structs personalizadas. Essa característica garante segurança de tipos e previne erros em tempo de execução.
+* **Indexação:** Os elementos do array são acessados através de índices, que começam em zero. A indexação permite manipulação individual de cada elemento.
+* **Tipos de arrays:**
+    * **Arrays simples:** Armazenam elementos do mesmo tipo.
+    * **Slices:** Subconjuntos de um array original, permitindo manipulação de partes específicas.
+    * **Arrays multidimensionais:** Estruturam dados em múltiplas dimensões, como matrizes.
+
+**Declaração e inicialização:**
+
+```rust
+// Array de 5 elementos i32
+let mut numeros: [i32; 5] = [1, 2, 3, 4, 5];
+
+// Array de 3 strings
+let frutas: [&str; 3] = ["Maçã", "Banana", "Laranja"];
+
+// Inicialização com valor padrão
+let zeros: [i32; 10] = [0; 10];
+```
+
+**Acesso e manipulação:**
+
+```rust
+// Acessando o segundo elemento
+let segundo_numero = numeros[1];
+
+// Alterando o valor do terceiro elemento
+numeros[2] = 10;
+
+// Iteração sobre o array
+for numero in &numeros {
+    println!("{}", numero);
+}
+```
+
+**Slices:**
+
+```rust
+// Slice dos 2 primeiros elementos
+let slice_primeiros_dois = &numeros[0..2];
+
+// Slice do terceiro ao último elemento
+let slice_resto = &numeros[2..];
+
+// Revertendo a ordem do array
+let mut numeros_revertidos = numeros.to_vec();
+numeros_revertidos.reverse();
+```
+
+**Arrays multidimensionais:**
+
+```rust
+// Matriz 3x3 de i32
+let matriz: [[i32; 3]; 3] = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+// Acessando um elemento específico da matriz
+let elemento_matriz = matriz[1][2];
+```
+
+**Vantagens:**
+
+* **Eficiência:** Arrays em Rust oferecem acesso rápido e direto aos seus elementos, resultando em alto desempenho.
+* **Segurança:** A tipagem estática garante segurança de tipos e previne erros em tempo de execução.
+* **Flexibilidade:** Suporte a diferentes tipos de dados e estruturas multidimensionais.
+
+**Desvantagens:**
+
+* **Tamanho fixo:** O tamanho do array precisa ser definido na compilação, limitando a flexibilidade em alguns casos.
+* **Gerenciamento de memória:** O programador é responsável por gerenciar a memória do array, o que pode gerar erros se não for feito corretamente.
+
+**Recursos adicionais:**
+
+* Documentação oficial: Documentação Rust Arrays: [https://doc.rust-lang.org/std/primitive.array.html](https://doc.rust-lang.org/std/primitive.array.html)
+
+## Métodos com Arrays
+
+Em Rust, os arrays são coleções de elementos do mesmo tipo com um tamanho fixo conhecido em tempo de compilação. Eles são declarados usando a sintaxe `[tipo; tamanho]`. Os métodos disponíveis para trabalhar com arrays em Rust incluem:
+
+1. **len()**: Retorna o comprimento do array, ou seja, o número de elementos que ele contém.
+
+   ```rust
+   let arr = [1, 2, 3, 4, 5];
+   println!("Comprimento do array: {}", arr.len());
+   ```
+
+2. **iter()**: Retorna um iterador sobre os elementos do array.
+
+   ```rust
+   let arr = [1, 2, 3, 4, 5];
+   for element in arr.iter() {
+       println!("{}", element);
+   }
+   ```
+
+3. **iter_mut()**: Retorna um iterador mutável sobre os elementos do array, permitindo a modificação dos elementos.
+
+   ```rust
+   let mut arr = [1, 2, 3, 4, 5];
+   for element in arr.iter_mut() {
+       *element *= 2;
+   }
+   ```
+
+4. **as_slice()**: Converte o array em uma fatia (slice), que é uma visão não mutável dos elementos do array.
+
+   ```rust
+   let arr = [1, 2, 3, 4, 5];
+   let slice = arr.as_slice();
+   ```
+
+5. **as_mut_slice()**: Converte o array em uma fatia mutável, permitindo a modificação dos elementos do array.
+
+   ```rust
+   let mut arr = [1, 2, 3, 4, 5];
+   let mut_slice = arr.as_mut_slice();
+   ```
+
+6. **into_iter()**: Consuma o array e retorna um iterador possuindo a propriedade do array.
+
+   ```rust
+   let arr = [1, 2, 3, 4, 5];
+   for element in arr.into_iter() {
+       println!("{}", element);
+   }
+   ```
+
+7. **iter().enumerate()**: Retorna um iterador que produz tuplas contendo o índice e o valor de cada elemento do array.
+
+   ```rust
+   let arr = [1, 2, 3, 4, 5];
+   for (index, value) in arr.iter().enumerate() {
+       println!("Index: {}, Value: {}", index, value);
+   }
+   ```
+
+8. **chunks()**: Divide o array em pedaços de um determinado tamanho.
+
+   ```rust
+   let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+   for chunk in arr.chunks(3) {
+       println!("{:?}", chunk);
+   }
+   ```
+
+Esses métodos fornecem maneiras convenientes de iterar sobre, acessar e modificar os elementos de um array em Rust.
+
 ## Vetores
 
 Em Rust, vetores são coleções de elementos do mesmo tipo, com tamanho fixo e alocados na pilha. Eles são representados pelo tipo `Vec<T>`, onde `T` é o tipo dos elementos que o vetor contém. Aqui estão alguns aspectos importantes sobre vetores em Rust:
