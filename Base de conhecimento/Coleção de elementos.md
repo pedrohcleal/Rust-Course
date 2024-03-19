@@ -293,3 +293,26 @@ let v1 = vec![1, 2, 3];
 let v2 = v1; // Movendo a propriedade de v1 para v2
 // println!("{:?}", v1); // Isso resultaria em um erro, pois v1 não é mais válido aqui
 ```
+## Conversão Arrays <> Vetores:
+
+Em Rust, a conversão entre arrays e vetores é bastante simples. Um array é uma coleção fixa de elementos do mesmo tipo, enquanto um vetor é uma coleção dinâmica de elementos do mesmo tipo que pode crescer ou encolher.
+
+Para converter um array em um vetor, você pode simplesmente usar o método `to_vec()` disponível em arrays. Por exemplo:
+
+```rust
+let array = [1, 2, 3, 4, 5];
+let vetor = array.to_vec();
+```
+
+Isso criará um novo vetor contendo os mesmos elementos do array.
+
+Para converter um vetor em um array, é um pouco mais complicado, pois você precisa garantir que o vetor tenha o mesmo tamanho que o array. Isso geralmente é feito usando uma técnica conhecida como "slicing". Por exemplo:
+
+```rust
+let vetor = vec![1, 2, 3, 4, 5];
+let array: [i32; 5] = vetor[..].try_into().unwrap();
+```
+
+Aqui, `vetor[..]` é um slice que cobre todos os elementos do vetor. Em seguida, `try_into()` tenta converter o slice em um array. Essa operação pode falhar se o vetor não tiver o mesmo tamanho que o array, então é necessário lidar com o resultado usando `unwrap()` ou tratando o erro adequadamente.
+
+Essa é uma visão geral simplificada das conversões entre array e vetor em Rust.
