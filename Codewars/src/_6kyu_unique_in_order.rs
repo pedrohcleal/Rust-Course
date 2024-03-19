@@ -1,9 +1,12 @@
-fn pub unique_in_order<T>(sequence: T) -> Vec<T::Item>
+// https://www.codewars.com/kata/54e6533c92449cc251001667
+pub fn unique_in_order<T>(sequence: T) -> Vec<T::Item>
     where
         T: std::iter::IntoIterator,
         T::Item: std::cmp::PartialEq + std::fmt::Debug,
 {   //função abaixo
-    vec![]
+    let mut vetor1: Vec<T::Item> = Vec::new();
+    vetor1.dedup();
+    return vetor1;
 }
 
 

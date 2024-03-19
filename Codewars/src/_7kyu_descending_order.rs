@@ -2,6 +2,7 @@ pub fn descending_order(x: u64) -> u64 {
     let strNumb = x.to_string();
     let mut arrayNumn: Vec<char> = strNumb.chars().collect();
     let mut result: u64 = 0;
+    //arrayNumb.dedup();
     arrayNumn.sort();
     arrayNumn.reverse();
     for &digit in &arrayNumn {

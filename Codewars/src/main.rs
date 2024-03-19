@@ -1,3 +1,4 @@
+use crate::_6kyu_unique_in_order::unique_in_order;
 use crate::_7kyu_descending_order::descending_order;
 
 mod _7kyu_descending_order;
@@ -7,5 +8,7 @@ mod _6kyu_unique_in_order;
 fn main() {
     println!("Start");
     let numb = 1021;
-    descending_order(numb);
+    //descending_order(numb);
+    unique_in_order("ABBCcAD");
+    //unique_in_order([1,2,2,3,3]);
 }
