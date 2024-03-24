@@ -316,3 +316,71 @@ let array: [i32; 5] = vetor[..].try_into().unwrap();
 Aqui, `vetor[..]` é um slice que cobre todos os elementos do vetor. Em seguida, `try_into()` tenta converter o slice em um array. Essa operação pode falhar se o vetor não tiver o mesmo tamanho que o array, então é necessário lidar com o resultado usando `unwrap()` ou tratando o erro adequadamente.
 
 Essa é uma visão geral simplificada das conversões entre array e vetor em Rust.
+
+## Strings
+
+Em Rust, uma string é uma coleção de caracteres Unicode codificados em UTF-8. Rust fornece dois tipos principais de strings: `String` e `&str`. Ambos representam uma sequência de caracteres, mas diferem em sua natureza e uso.
+
+1. **`String`**:
+   - `String` é uma string de propriedade, o que significa que ela possui alocação de memória e pode ser modificada.
+   - Ela é mutável e pode crescer ou encolher conforme necessário.
+   - Para criar uma `String`, você pode usar o método `String::from()` ou o literal de string `String::from("texto")`.
+   - Exemplo:
+     ```rust
+     let mut s = String::from("Olá, mundo!");
+     s.push_str(" Bem-vindo!");
+     println!("{}", s); // Saída: Olá, mundo! Bem-vindo!
+     ```
+
+2. **`&str`**:
+   - `&str` (também conhecido como fatia de string) é uma visualização emprestada de uma sequência de caracteres.
+   - Ela não possui propriedade sobre os dados subjacentes e é imutável por padrão.
+   - Pode ser criada a partir de um literal de string (`"texto"`) ou a partir de uma `String` existente por meio de referências (`&`).
+   - Exemplo:
+     ```rust
+     let s: &str = "Olá, mundo!";
+     ```
+
+As strings em Rust são seguras contra condições de corrida (race conditions) e erros de memória, graças ao sistema de propriedade e ao sistema de tipos forte. Isso significa que o Rust rastreia cuidadosamente a vida útil das referências para garantir que as strings sejam manipuladas de forma segura e eficiente.
+
+Além disso, Rust fornece uma ampla gama de métodos e funcionalidades para trabalhar com strings, incluindo operações de manipulação, pesquisa, concatenação, divisão e muito mais. Isso torna o trabalho com strings em Rust bastante poderoso e expressivo.
+
+## Métodos com String
+
+Em Rust, o tipo `String` oferece uma variedade de métodos para manipular e interagir com strings. Esses métodos permitem realizar operações como concatenação, busca, manipulação de caracteres, conversão de caixa, divisão e muito mais. Aqui está uma visão geral de alguns dos métodos mais comuns disponíveis para o tipo `String`:
+
+1. **Manipulação de Conteúdo**:
+   - `push_str(&str)`: Adiciona uma fatia de string à `String`.
+   - `push(char)`: Adiciona um caractere à `String`.
+   - `insert(index, &str)`: Insere uma fatia de string em uma posição específica na `String`.
+   - `remove(index)`: Remove e retorna o caractere na posição especificada.
+   - `replace(old, new)`: Substitui todas as ocorrências de uma substring por outra.
+   - `truncate(len)`: Trunca a `String` para o comprimento especificado.
+   - `clear()`: Remove todo o conteúdo da `String`.
+
+2. **Manipulação de Caracteres**:
+   - `chars()`: Retorna um iterador sobre os caracteres da `String`.
+   - `bytes()`: Retorna um iterador sobre os bytes da `String`.
+   - `as_bytes()`: Retorna uma referência para a representação em bytes da `String`.
+
+3. **Operações de Pesquisa**:
+   - `contains(&str)`: Verifica se a `String` contém a substring fornecida.
+   - `starts_with(&str)`: Verifica se a `String` começa com a substring fornecida.
+   - `ends_with(&str)`: Verifica se a `String` termina com a substring fornecida.
+   - `find(&str)`: Retorna a posição da primeira ocorrência da substring fornecida.
+
+4. **Concatenação e Divisão**:
+   - `+` ou `format!()`: Concatena duas `String` ou uma `String` com outros tipos.
+   - `split(&str)`: Divide a `String` em partes com base em um delimitador.
+
+5. **Transformação e Conversão**:
+   - `to_lowercase()` / `to_uppercase()`: Converte a `String` para minúsculas / maiúsculas.
+   - `trim()`, `trim_start()`, `trim_end()`: Remove espaços em branco no início e/ou no final da `String`.
+   - `parse()`: Converte a `String` em um tipo específico.
+
+6. **Outros Métodos Úteis**:
+   - `len()`: Retorna o comprimento da `String`.
+   - `is_empty()`: Verifica se a `String` está vazia.
+   - `capacity()`: Retorna a capacidade atual da `String`.
+
+Esses são apenas alguns exemplos dos métodos disponíveis para manipulação de strings em Rust. Eles são parte da versatilidade que o Rust oferece ao trabalhar com strings, permitindo operações eficientes e seguras em tempo de compilação.
