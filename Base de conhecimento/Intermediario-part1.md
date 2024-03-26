@@ -41,3 +41,69 @@ Aqui estão alguns exemplos de uso de `usize` em Rust:
    ```
 
 Em resumo, `usize` é um tipo de dado fundamental em Rust que representa o tamanho de endereços de memória na arquitetura do sistema em que o código está sendo executado. Ele é amplamente utilizado para operações que envolvem tamanhos de memória e índices de arrays e vetores.
+
+## Tuplas
+
+Em Rust, uma tupla é uma estrutura de dados que pode conter um número fixo de elementos de diferentes tipos. Ao contrário de arrays, onde todos os elementos devem ter o mesmo tipo e um tamanho fixo, uma tupla pode agrupar valores heterogêneos.
+
+A sintaxe para criar uma tupla em Rust envolve listar os elementos entre parênteses e separá-los por vírgulas. Por exemplo:
+
+```rust
+let minha_tupla = (42, "hello", 3.14);
+```
+
+Esta linha de código cria uma tupla contendo um inteiro, uma string e um número de ponto flutuante.
+
+As tuplas podem ser desestruturadas para acessar seus elementos individuais. Isso é feito atribuindo a tupla a uma variável e usando padrões de correspondência para extrair os valores. Por exemplo:
+
+```rust
+let (x, y, z) = minha_tupla;
+println!("x: {}, y: {}, z: {}", x, y, z);
+```
+
+Este código extrai os elementos da tupla `minha_tupla` e os atribui às variáveis `x`, `y` e `z`.
+
+As tuplas em Rust são frequentemente usadas quando você quer retornar múltiplos valores de uma função ou quando precisa de uma estrutura simples para agrupar valores de tipos diferentes. No entanto, como as tuplas não têm nomes de campo, seu uso pode ser menos expressivo do que usar structs em certos casos.
+
+## Enum
+
+Em Rust, `enum` é uma construção poderosa que permite definir um tipo de dados que pode ter um de vários valores distintos. Isso é útil para representar um conjunto finito de opções ou estados.
+
+Aqui está um exemplo simples de enum em Rust:
+
+```rust
+enum Cor {
+    Vermelho,
+    Verde,
+    Azul,
+}
+```
+
+Neste exemplo, `Cor` é um enum que pode ter três valores possíveis: `Vermelho`, `Verde` e `Azul`.
+
+Enums podem ter valores associados, o que permite armazenar dados junto com cada variante. Por exemplo:
+
+```rust
+enum Coordenada {
+    PontoCartesiano(f64, f64),
+    PontoPolar { raio: f64, angulo: f64 },
+}
+```
+
+Aqui, `Coordenada` é um enum com duas variantes: `PontoCartesiano`, que contém duas coordenadas cartesianas, e `PontoPolar`, que contém um raio e um ângulo.
+
+Enums em Rust podem ser usados com correspondência de padrões para inspecionar e manipular os diferentes valores possíveis. Por exemplo:
+
+```rust
+let minha_cor = Cor::Verde;
+
+match minha_cor {
+    Cor::Vermelho => println!("A cor é vermelha"),
+    Cor::Verde => println!("A cor é verde"),
+    Cor::Azul => println!("A cor é azul"),
+}
+```
+
+Além disso, enums podem ter métodos associados, permitindo a definição de comportamentos específicos para cada variante. Isso os torna úteis para implementar padrões de tipo de soma (sum types), onde um valor pode ser uma de várias coisas.
+
+Em resumo, enums em Rust são uma ferramenta versátil para representar tipos de dados que podem ter uma variedade de valores possíveis, e eles desempenham um papel importante na expressividade e segurança do Rust.
