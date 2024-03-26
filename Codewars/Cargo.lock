@@ -5,3 +5,12 @@ version = 3
 [[package]]
 name = "Codewars"
 version = "0.1.0"
+dependencies = [
+ "morse_code",
+]
+
+[[package]]
+name = "morse_code"
+version = "0.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "938eed86a3bc1a3361a06261eb3f280026ed3678261e373ada0298a8d0ce0c06"

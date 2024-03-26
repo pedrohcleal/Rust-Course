@@ -13,12 +13,12 @@ mod aula07_esta_a_um_passo;
 fn main() {
     let array1 = [1, 3, 7, 2, 6, 100, 70, 3, 5];
     let testPrimo = 14;
-    let str1 = "acd";
-    let str2 = "dca";
+    let str1 = "pedro";
+    let str2 = "pro";
     if esta_a_um_passo(str1,str2){
         println!("está a uma edição de distancia");
     } else {
-        println!("está a uma edição de distancia");
+        println!("nao está a uma edição de distancia");
     }
 }
 // if eh_permutacao(str1,str2) {
