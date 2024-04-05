@@ -1,8 +1,6 @@
-# Principais Libs em Rust
+# Rocket
 
-## Rocket
-
-# Iniciar
+## Iniciar
 
 Para iniciar o uso da biblioteca Rocket em um projeto Rust, você precisará adicionar a dependência correta ao seu arquivo `Cargo.toml`, que é o arquivo de manifesto do seu projeto Rust. Aqui estão os passos básicos:
 
@@ -48,7 +46,7 @@ fn main() {
 
 Esses são os passos básicos para iniciar o uso da biblioteca Rocket em um projeto Rust. A partir daqui, você pode explorar mais sobre as funcionalidades oferecidas pela Rocket e começar a construir sua aplicação web.
 
-# Métodos Rocket
+## Métodos Rocket
 
 Rocket é um framework web para a linguagem de programação Rust, projetado para tornar o desenvolvimento web mais simples, seguro e produtivo. Ele oferece uma sintaxe intuitiva e expressiva, além de uma forte tipagem estática, aproveitando as características de segurança e desempenho que Rust proporciona. Abaixo estão alguns dos principais métodos e funcionalidades fornecidos pela biblioteca Rocket:
 
