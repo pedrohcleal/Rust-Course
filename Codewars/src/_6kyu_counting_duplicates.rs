@@ -1,7 +1,7 @@
 use std::fmt::format;
 
 pub fn count_duplicates(text: &str) -> u32 {
-    let mut text = text.to_string().to;
+    let mut text = text.to_string();
     let mut cont1:u32 = 0;
     for i in text.to_lowercase().chars().rev(){
         println!("{}", i);

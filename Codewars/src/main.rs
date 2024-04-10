@@ -1,23 +1,14 @@
-use crate::_5kyu_primes_in_numbers::prime_factors;
-use crate::_6kyu_counting_duplicates::count_duplicates;
-use crate::_6kyu_two_sum::two_sum;
-use crate::_6kyu_unique_in_order::unique_in_order;
-use crate::_7kyu_count_the_digit::nb_dig;
-use crate::_7kyu_descending_order::descending_order;
-use crate::_7kyu_square_every_digit::square_digits;
+use crate::_6kyu_find_the_missing_term_in_an_artihmetic_progress::find_missing;
 
-mod _7kyu_descending_order;
-mod _7kyu_you_are_a_square;
-mod _6kyu_unique_in_order;
-mod _7kyu_square_every_digit;
-mod _6kyu_two_sum;
-mod _7kyu_count_the_digit;
-mod _5kyu_primes_in_numbers;
-mod _6kyu_counting_duplicates;
+mod _6kyu_find_the_missing_term_in_an_artihmetic_progress;
 
 fn main() {
+    let set = &[1, 2, 3, 4, 6, 7, 8, 9];
+    let set2 = &[1, 3, 4, 5, 6, 7, 8, 9];
     println!("Starrrt");
-    println!("{}", count_duplicates("woorld"));
+    println!("{}", find_missing(set));
+    println!("{}", find_missing(set2));
+
 }
 
 // Escreva uma função que retornará a contagem de caracteres alfabéticos distintos,
