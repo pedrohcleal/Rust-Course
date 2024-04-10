@@ -107,3 +107,72 @@ match minha_cor {
 Além disso, enums podem ter métodos associados, permitindo a definição de comportamentos específicos para cada variante. Isso os torna úteis para implementar padrões de tipo de soma (sum types), onde um valor pode ser uma de várias coisas.
 
 Em resumo, enums em Rust são uma ferramenta versátil para representar tipos de dados que podem ter uma variedade de valores possíveis, e eles desempenham um papel importante na expressividade e segurança do Rust.
+
+## match + enum
+
+Em Rust, você pode usar `match` com `enum` de várias maneiras. `Enum` é uma estrutura de dados poderosa que permite definir tipos que podem ter diferentes variantes. Aqui está um exemplo simples de como você pode usar `match` com `enum` em Rust:
+
+```rust
+// Definindo um enum chamado `DiaDaSemana`
+enum DiaDaSemana {
+    Segunda,
+    Terca,
+    Quarta,
+    Quinta,
+    Sexta,
+    Sabado,
+    Domingo,
+}
+
+// Função que usa match com enum
+fn dia_util(dia: DiaDaSemana) -> bool {
+    // Usando o match para lidar com cada variante do enum
+    match dia {
+        DiaDaSemana::Segunda => true,
+        DiaDaSemana::Terca => true,
+        DiaDaSemana::Quarta => true,
+        DiaDaSemana::Quinta => true,
+        DiaDaSemana::Sexta => true,
+        DiaDaSemana::Sabado => false,
+        DiaDaSemana::Domingo => false,
+    }
+}
+
+fn main() {
+    let hoje = DiaDaSemana::Segunda;
+    println!("Hoje é um dia útil? {}", dia_util(hoje));
+}
+```
+
+Neste exemplo, temos um `enum` chamado `DiaDaSemana`, que define os dias da semana. Em seguida, temos uma função chamada `dia_util`, que recebe um `DiaDaSemana` como argumento e retorna verdadeiro se o dia for útil (de segunda a sexta-feira) ou falso se for um fim de semana (sábado ou domingo). Dentro da função `dia_util`, usamos `match` para lidar com cada variante do `enum`, retornando verdadeiro para os dias úteis e falso para os dias não úteis.
+
+Você também pode usar `match` para extrair valores associados a variantes do `enum`. Por exemplo, se as variantes do `enum` tiverem dados associados, você pode usá-los desta forma:
+
+```rust
+// Definindo um enum com dados associados
+enum Evento {
+    Mensagem(String),
+    Numero(i32),
+}
+
+fn processar_evento(evento: Evento) {
+    match evento {
+        Evento::Mensagem(mensagem) => {
+            println!("Mensagem recebida: {}", mensagem);
+        }
+        Evento::Numero(numero) => {
+            println!("Número recebido: {}", numero);
+        }
+    }
+}
+
+fn main() {
+    let evento_1 = Evento::Mensagem(String::from("Olá, mundo!"));
+    let evento_2 = Evento::Numero(42);
+
+    processar_evento(evento_1);
+    processar_evento(evento_2);
+}
+```
+
+Neste exemplo, o `enum` `Evento` tem duas variantes, `Mensagem` e `Numero`, ambas com dados associados (`String` e `i32`, respectivamente). A função `processar_evento` usa `match` para lidar com cada variante e extrair os dados associados, imprimindo-os na tela.
