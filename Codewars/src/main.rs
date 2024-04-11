@@ -1,14 +1,8 @@
-use crate::_6kyu_find_the_missing_term_in_an_artihmetic_progress::find_missing;
-
-mod _6kyu_find_the_missing_term_in_an_artihmetic_progress;
+mod _6kyu_reverse_or_rotate;
 
 fn main() {
-    let set = &[1, 2, 3, 4, 6, 7, 8, 9];
-    let set2 = &[1, 3, 4, 5, 6, 7, 8, 9];
     println!("Starrrt");
-    println!("{}", find_missing(set));
-    println!("{}", find_missing(set2));
-
+    println!("{}", _6kyu_reverse_or_rotate::revrot("66443875",4));
 }
 
 // Escreva uma função que retornará a contagem de caracteres alfabéticos distintos,

@@ -1,1 +1,1 @@
-/home/administrator/Documents/GitHub/Rust-Course/Codewars/target/debug/Codewars: /home/administrator/Documents/GitHub/Rust-Course/Codewars/src/_6kyu_find_the_missing_term_in_an_artihmetic_progress.rs /home/administrator/Documents/GitHub/Rust-Course/Codewars/src/main.rs
+/home/administrator/Documents/GitHub/Rust-Course/Codewars/target/debug/Codewars: /home/administrator/Documents/GitHub/Rust-Course/Codewars/src/_6kyu_reverse_or_rotate.rs /home/administrator/Documents/GitHub/Rust-Course/Codewars/src/main.rs
