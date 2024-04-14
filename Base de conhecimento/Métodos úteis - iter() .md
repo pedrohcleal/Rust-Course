@@ -95,3 +95,173 @@ let combinados = numeros.iter().zip(letras.iter());
 let opcoes = vec![Some(5), None, Some(10)];
 let valores: Vec<i32> = opcoes.iter().filter_map(|&x| x).collect();
 ```
+
+## .fold()
+
+Em Rust, a função `fold()` é uma operação de alto nível que permite reduzir uma coleção a um único valor, aplicando uma função de acumulação a cada elemento da coleção. Esta função é especialmente útil quando você precisa iterar sobre uma coleção e acumular resultados.
+
+A assinatura da função `fold()` em Rust é a seguinte:
+
+```rust
+fn fold<B, F>(self, init: B, f: F) -> B
+where
+    F: FnMut(B, Self::Item) -> B,
+```
+
+Aqui está o que cada um dos parâmetros significa:
+
+- `self`: A coleção sobre a qual estamos iterando.
+- `init`: O valor inicial do acumulador.
+- `f`: A função de acumulação que será aplicada a cada elemento da coleção. Esta função recebe dois argumentos: o acumulador atual e o próximo elemento da coleção, e retorna o novo valor do acumulador.
+
+Por exemplo, imagine que temos um vetor de números e queremos calcular a soma de todos esses números usando `fold()`:
+
+```rust
+fn main() {
+    let numbers = vec![1, 2, 3, 4, 5];
+    let sum = numbers.iter().fold(0, |acc, &x| acc + x);
+    println!("A soma dos números é: {}", sum);
+}
+```
+
+Neste exemplo, `fold()` inicia o acumulador com `0` e, para cada elemento do vetor, adiciona o elemento ao acumulador. No final, `sum` conterá a soma de todos os números no vetor.
+
+A função `fold()` é uma ferramenta poderosa para trabalhar com coleções em Rust, permitindo realizar operações de redução de forma concisa e eficiente.
+
+## Outros exemplos:
+
+Claro! Aqui estão alguns outros exemplos de como a função `fold()` pode ser usada em Rust:
+
+1. **Multiplicação de todos os elementos de um vetor**:
+   ```rust
+   let numbers = vec![2, 3, 4, 5];
+   let product = numbers.iter().fold(1, |acc, &x| acc * x);
+   println!("O produto dos números é: {}", product);
+   ```
+
+2. **Concatenação de uma lista de strings**:
+   ```rust
+   let words = vec!["Olá", "mundo", "Rust"];
+   let concatenated = words.iter().fold(String::new(), |acc, &x| acc + x);
+   println!("Concatenado: {}", concatenated);
+   ```
+
+3. **Calcular a média de uma lista de números**:
+   ```rust
+   let numbers = vec![10, 20, 30, 40, 50];
+   let (sum, count) = numbers.iter().fold((0, 0), |(acc_sum, acc_count), &x| (acc_sum + x, acc_count + 1));
+   let average = sum as f64 / count as f64;
+   println!("A média dos números é: {}", average);
+   ```
+
+4. **Encontrar o maior número em uma lista**:
+   ```rust
+   let numbers = vec![10, 5, 25, 30, 15];
+   let max_number = numbers.iter().fold(i32::MIN, |max, &x| if x > max { x } else { max });
+   println!("O maior número é: {}", max_number);
+   ```
+
+5. **Contagem de ocorrências de cada elemento em uma lista**:
+   ```rust
+   let numbers = vec![1, 2, 2, 3, 3, 3, 4, 4, 4, 4];
+   let counts = numbers.iter().fold(std::collections::HashMap::new(), |mut acc, &x| {
+       *acc.entry(x).or_insert(0) += 1;
+       acc
+   });
+   println!("Contagem de ocorrências: {:?}", counts);
+   ```
+
+Esses são apenas alguns exemplos de como a função `fold()` pode ser utilizada para diversas operações de redução em Rust. Ela oferece uma maneira concisa e expressiva de processar coleções e calcular resultados agregados.
+
+## .map()
+
+Em Rust, o método `.map()` é uma função de ordem superior que está disponível para tipos que implementam o trait `Iterator`. Ele permite transformar os elementos de um iterador de uma forma flexível e concisa. Quando você chama `.map()`, você fornece uma função de transformação que será aplicada a cada elemento do iterador, produzindo um novo iterador com os resultados dessas transformações.
+
+A assinatura básica do método `.map()` é a seguinte:
+
+```rust
+fn map<B, F>(self, f: F) -> Map<Self, F>
+    where
+        F: FnMut(Self::Item) -> B,
+```
+
+- `B` é o tipo de dado que será produzido após a transformação.
+- `F` é o tipo da função de transformação que será aplicada a cada elemento do iterador.
+- `Self::Item` é o tipo de elemento contido no iterador original.
+
+Aqui está um exemplo simples de como você pode usar `.map()` em Rust:
+
+```rust
+fn main() {
+    let numbers = vec![1, 2, 3, 4, 5];
+    let squared_numbers: Vec<i32> = numbers.iter().map(|&x| x * x).collect();
+    println!("{:?}", squared_numbers); // Output: [1, 4, 9, 16, 25]
+}
+```
+
+Neste exemplo, `numbers.iter()` cria um iterador sobre os elementos de `numbers`. O `.map(|&x| x * x)` aplica a função de transformação que multiplica cada elemento por ele mesmo. Finalmente, `.collect()` coleta os resultados transformados em um novo `Vec<i32>` chamado `squared_numbers`.
+
+É importante notar que `.map()` não modifica o iterador original; ele retorna um novo iterador que produzirá os resultados transformados quando iterado sobre. Isso ajuda a manter a segurança e imutabilidade em Rust, já que não há efeitos colaterais na coleção original.
+
+### Exemplos:
+
+Claro! Aqui estão alguns exemplos adicionais de como você pode usar o método `.map()` em Rust:
+
+1. **Conversão de tipos**:
+   
+   Você pode usar `.map()` para converter os elementos de um tipo para outro. Por exemplo, converter uma lista de strings em uma lista de seus comprimentos:
+
+   ```rust
+   let strings = vec!["hello", "world", "rust"];
+   let lengths: Vec<usize> = strings.iter().map(|s| s.len()).collect();
+   println!("{:?}", lengths); // Output: [5, 5, 4]
+   ```
+
+2. **Aplicação de funções customizadas**:
+
+   Você pode definir suas próprias funções e aplicá-las com `.map()`. Por exemplo, aplicar uma função que adiciona um prefixo a cada string em uma lista:
+
+   ```rust
+   fn add_prefix(s: &str) -> String {
+       format!("Prefix: {}", s)
+   }
+
+   let strings = vec!["hello", "world", "rust"];
+   let prefixed: Vec<String> = strings.iter().map(|&s| add_prefix(s)).collect();
+   println!("{:?}", prefixed); // Output: ["Prefix: hello", "Prefix: world", "Prefix: rust"]
+   ```
+
+3. **Transformação de estruturas**:
+
+   Você pode usar `.map()` para transformar os elementos de uma estrutura de dados complexa. Por exemplo, extrair apenas um campo de uma lista de structs:
+
+   ```rust
+   #[derive(Debug)]
+   struct Person {
+       name: String,
+       age: u32,
+   }
+
+   let people = vec![
+       Person { name: "Alice".to_string(), age: 30 },
+       Person { name: "Bob".to_string(), age: 25 },
+   ];
+
+   let names: Vec<String> = people.iter().map(|p| p.name.clone()).collect();
+   println!("{:?}", names); // Output: ["Alice", "Bob"]
+   ```
+
+4. **Composição de funções**:
+
+   Você pode encadear várias chamadas `.map()` para executar transformações mais complexas. Por exemplo, converter uma lista de números em uma lista de seus quadrados e, em seguida, filtrar os números pares:
+
+   ```rust
+   let numbers = vec![1, 2, 3, 4, 5];
+   let even_squared: Vec<i32> = numbers.iter()
+                                      .map(|&x| x * x)
+                                      .filter(|&x| x % 2 == 0)
+                                      .collect();
+   println!("{:?}", even_squared); // Output: [4, 16]
+   ```
+
+Esses são apenas alguns exemplos para ilustrar a versatilidade do método `.map()` em Rust. Ele é uma ferramenta poderosa para transformar e manipular coleções de forma elegante e eficiente.
