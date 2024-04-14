@@ -48,4 +48,50 @@ let numeros = vec![1, 2, 3, 4, 5];
 let primeiros_tres = numeros.iter().take(3);
 ```
 
-Esses são apenas alguns exemplos, mas existem muitos outros métodos disponíveis no Rust Standard Library que podem ser combinados de várias maneiras para resolver desafios de lógica de maneira eficiente e expressiva.
+### Outros métodos:
+
+Claro! Além dos métodos `sum()` e `count()`, existem vários outros métodos úteis que podem ser combinados com `iter()` e `filter()` para resolver desafios de lógica em Rust. Aqui estão mais alguns exemplos:
+
+1. **max() e min()**: Retorna o maior e o menor elemento do iterador, respectivamente.
+
+```rust
+let numeros = vec![1, 5, 2, 8, 3];
+let maximo = numeros.iter().max();
+let minimo = numeros.iter().min();
+```
+
+2. **sum()**: Calcula a soma de todos os elementos do iterador.
+
+```rust
+let numeros = vec![1, 2, 3, 4, 5];
+let soma: i32 = numeros.iter().sum();
+```
+
+3. **count()**: Conta o número total de elementos no iterador.
+
+```rust
+let numeros = vec![1, 2, 3, 4, 5];
+let total_elementos = numeros.iter().count();
+```
+
+4. **fold()**: Aplica uma função a cada elemento do iterador para acumular um valor.
+
+```rust
+let numeros = vec![1, 2, 3, 4, 5];
+let soma = numeros.iter().fold(0, |acc, &x| acc + x);
+```
+
+5. **zip()**: Combina dois iteradores em um único iterador que produz tuplas de elementos correspondentes.
+
+```rust
+let numeros = vec![1, 2, 3];
+let letras = vec!['a', 'b', 'c'];
+let combinados = numeros.iter().zip(letras.iter());
+```
+
+6. **filter_map()**: Aplica uma função a cada elemento do iterador e filtra os resultados que são `Some`.
+
+```rust
+let opcoes = vec![Some(5), None, Some(10)];
+let valores: Vec<i32> = opcoes.iter().filter_map(|&x| x).collect();
+```
