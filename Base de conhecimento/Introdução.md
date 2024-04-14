@@ -453,3 +453,64 @@ Essas são algumas das funcionalidades básicas relacionadas à entrada e saída
      ```
 
 Lembre-se de que, ao trabalhar com números de ponto flutuante, é importante considerar as peculiaridades associadas à representação desses números em computadores e os possíveis erros de arredondamento. Além disso, ao lidar com incremento e decremento, use `mut` para tornar a variável mutável.
+
+## Mod e Use crate
+
+Em Rust, o conceito de "mod" é fundamental para organizar e estruturar o código. Um módulo é um escopo onde você pode definir funções, estruturas de dados, constantes e outros itens. Você pode pensar em módulos como contêineres para agrupar funcionalidades relacionadas.
+
+Para criar um módulo em Rust, você simplesmente usa a palavra-chave `mod` seguida do nome do módulo e, em seguida, coloca o código dentro de um bloco de chaves. Por exemplo:
+
+```rust
+mod meu_modulo {
+    // definições de funções, estruturas, etc. vão aqui
+}
+```
+
+Você pode ter módulos aninhados para organizar ainda mais o seu código:
+
+```rust
+mod modulo_pai {
+    mod submodulo {
+        // definições de funções, estruturas, etc. vão aqui
+    }
+}
+```
+
+Para usar um módulo em outro arquivo, você pode usar a palavra-chave `use`. Por exemplo, se você tem um módulo chamado `meu_modulo` em um arquivo chamado `meu_modulo.rs`, e você quer usá-lo em outro arquivo, você pode fazer assim:
+
+```rust
+// no arquivo main.rs
+mod meu_modulo; // importa o módulo do arquivo meu_modulo.rs
+
+use meu_modulo::funcao_do_modulo;
+
+fn main() {
+    meu_modulo::funcao_do_modulo(); // chamando uma função do módulo
+}
+```
+
+O `crate` é um conceito relacionado, mas um pouco diferente. Em Rust, `crate` é o termo usado para se referir ao seu projeto como um todo, incluindo todos os módulos e arquivos dentro dele. Quando você escreve código em um arquivo no seu projeto, esse código está dentro do "crate". 
+
+Por exemplo, se você tem um projeto com vários arquivos como `main.rs`, `meu_modulo.rs` e assim por diante, todos esses arquivos fazem parte do mesmo "crate".
+
+Para usar itens de outro crate, você precisa especificar isso no seu `Cargo.toml`, o arquivo de manifesto do seu projeto, sob a seção `[dependencies]`. Quando você especifica uma dependência, você pode usar a palavra-chave `extern crate` para importar e usar os itens desse crate. Mas desde a versão 2018 do Rust, não é necessário usar `extern crate` para a maioria das dependências, já que o sistema de módulos e imports foi simplificado.
+
+Por exemplo, suponha que você queira usar a biblioteca `rand` em seu projeto. Adicione isso ao seu `Cargo.toml`:
+
+```toml
+[dependencies]
+rand = "0.8.4"
+```
+
+E então você pode usá-lo em seu código assim:
+
+```rust
+use rand::Rng;
+
+fn main() {
+    let numero_aleatorio = rand::thread_rng().gen_range(1..101);
+    println!("Número aleatório: {}", numero_aleatorio);
+}
+```
+
+Isso importa a função `thread_rng` do crate `rand`, permitindo que você a use para gerar números aleatórios.
